@@ -4,14 +4,14 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { scryptSync } from "crypto";
 
-
 // Define the type for credentials
 interface Credentials {
   email: string;
   password: string;
 }
 
-export const authOptions = {
+// Handler for GET and POST requests
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -19,7 +19,6 @@ export const authOptions = {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-
       async authorize(credentials: Credentials | undefined) {
         if (!credentials) {
           return null; // If credentials are undefined, return null
@@ -60,15 +59,13 @@ export const authOptions = {
     }),
   ],
   session: {
-    strategy: "jwt" as const, // Use the correct 'jwt' literal type
+    strategy: "jwt", // Use the correct 'jwt' literal type
   },
   secret: process.env.NEXTAUTH_SECRET, // Secret for encrypting JWT tokens
   pages: {
     signIn: "/", // Custom sign-in page URL
   },
-};
+});
 
-// Handler for GET and POST requests
-const handler = NextAuth(authOptions);
-
+// Export the handlers for GET and POST requests
 export { handler as GET, handler as POST };
