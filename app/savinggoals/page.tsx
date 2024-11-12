@@ -24,6 +24,7 @@ const AddIcon = () => (
 
 export default function SavingGoals () {
  const router =  useRouter();
+const { data: session } = useSession();
 
   useEffect(() => {
     if (!session) {
