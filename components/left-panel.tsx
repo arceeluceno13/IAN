@@ -140,7 +140,7 @@ export default function LeftPanel() {
                         <div className="flex-grow text-center">Payment</div>
                     </Link>
                     <Link
-                        href="/savingGoals"
+                        href="/savinggoals"
                         className="block w-full bg-gradient-to-br from-[#018053] to-[#001a10] rounded-xl py-2 lg:py-3 px-2 text-white shadow-lg font-medium border border-white text-center hover:opacity-75 hover:text-green-400 transition duration-300"
                     >
                         <div className="w-6"></div>
