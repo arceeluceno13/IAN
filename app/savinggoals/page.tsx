@@ -1,5 +1,8 @@
 import React from 'react';
 import LeftPanel from "@/components/left-panel"
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import  { useRouter } from "next/navigation";
 
 const AddIcon = () => (
   <svg 
@@ -18,6 +21,16 @@ const AddIcon = () => (
 );
 
 export default function SavingGoals () {
+ const router =  useRouter();
+
+  useEffect(() => {
+    if (!session) {
+        router.replace("/login");
+    }
+}, [session, router]);
+
+
+  
   return (
     <div className="flex h-screen">
       <LeftPanel />
