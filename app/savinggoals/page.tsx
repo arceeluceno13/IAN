@@ -29,8 +29,6 @@ export default function SavingGoals () {
     }
 }, [session, router]);
 
-
-  
   return (
     <div className="flex h-screen">
       <LeftPanel />
