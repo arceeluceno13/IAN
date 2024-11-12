@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import LeftPanel from "@/components/left-panel"
 import { useSession } from "next-auth/react";
